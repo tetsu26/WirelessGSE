@@ -1,0 +1,803 @@
+EESchema Schematic File Version 4
+LIBS:GSEver2-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "GSE Wireless System Ver.2"
+Date "2019-01-14"
+Rev "1.1"
+Comp "FROM THE EARTH"
+Comment1 "Made by Tetsushi Amano"
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L power:+12V #PWR0101
+U 1 1 5BEE3160
+P 1350 1300
+F 0 "#PWR0101" H 1350 1150 50  0001 C CNN
+F 1 "+12V" H 1365 1473 50  0000 C CNN
+F 2 "" H 1350 1300 50  0001 C CNN
+F 3 "" H 1350 1300 50  0001 C CNN
+	1    1350 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:946H-1C-5D K1
+U 1 1 5BEE3642
+P 8650 5150
+F 0 "K1" H 9300 5415 50  0000 C CNN
+F 1 "946H-1C-5D" H 9300 5324 50  0000 C CNN
+F 2 "SamacSys_Parts:946H1C5D" H 9800 5250 50  0001 L CNN
+F 3 "http://akizukidenshi.com/download/ds/hsinda/946Series_Relay.pdf" H 9800 5150 50  0001 L CNN
+F 4 "946 Series Relay" H 9800 5050 50  0001 L CNN "Description"
+F 5 "12" H 9800 4950 50  0001 L CNN "Height"
+F 6 "HSINDA" H 9800 4850 50  0001 L CNN "Manufacturer_Name"
+F 7 "946H-1C-5D" H 9800 4750 50  0001 L CNN "Manufacturer_Part_Number"
+F 8 "" H 9800 4650 50  0001 L CNN "RS Part Number"
+F 9 "" H 9800 4550 50  0001 L CNN "RS Price/Stock"
+F 10 "946H-1C-5D" H 9800 4450 50  0001 L CNN "Arrow Part Number"
+F 11 "" H 9800 4350 50  0001 L CNN "Arrow Price/Stock"
+	1    8650 5150
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:MBED-LPC1768 IC1
+U 1 1 5BEE499F
+P 4600 3100
+F 0 "IC1" H 5450 3365 50  0000 C CNN
+F 1 "MBED-LPC1768" H 5450 3274 50  0000 C CNN
+F 2 "SamacSys_Parts:DIPS2286W63P254L5370H300Q40N" H 6150 3200 50  0001 L CNN
+F 3 "https://os.mbed.com/platforms/mbed-LPC1768/" H 6150 3100 50  0001 L CNN
+F 4 "ARM mbed LPC1768 Module" H 6150 3000 50  0001 L CNN "Description"
+F 5 "3" H 6150 2900 50  0001 L CNN "Height"
+F 6 "mbed" H 6150 2800 50  0001 L CNN "Manufacturer_Name"
+F 7 "MBED-LPC1768" H 6150 2700 50  0001 L CNN "Manufacturer_Part_Number"
+F 8 "7039238" H 6150 2600 50  0001 L CNN "RS Part Number"
+F 9 "http://uk.rs-online.com/web/p/products/7039238" H 6150 2500 50  0001 L CNN "RS Price/Stock"
+F 10 "MBED-LPC1768" H 6150 2400 50  0001 L CNN "Arrow Part Number"
+F 11 "http://uk.rs-online.com/web/p/products/7039238" H 6150 2300 50  0001 L CNN "Arrow Price/Stock"
+	1    4600 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:BP5293-50 PS1
+U 1 1 5BEE32E6
+P 1600 1550
+F 0 "PS1" H 2150 1815 50  0000 C CNN
+F 1 "BP5293-50" H 2150 1724 50  0000 C CNN
+F 2 "SamacSys_Parts:TO254P570X1690X1800-3P" H 2550 1650 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/BP5293-50.pdf" H 2550 1550 50  0001 L CNN
+F 4 "Switching Voltage Regulators 1ch DC/DC Buck Conv 5V Typ Output Volt" H 2550 1450 50  0001 L CNN "Description"
+F 5 "5.7" H 2550 1350 50  0001 L CNN "Height"
+F 6 "ROHM Semiconductor" H 2550 1250 50  0001 L CNN "Manufacturer_Name"
+F 7 "BP5293-50" H 2550 1150 50  0001 L CNN "Manufacturer_Part_Number"
+F 8 "1312731" H 2550 1050 50  0001 L CNN "RS Part Number"
+F 9 "http://uk.rs-online.com/web/p/products/1312731" H 2550 950 50  0001 L CNN "RS Price/Stock"
+F 10 "BP5293-50" H 2550 850 50  0001 L CNN "Arrow Part Number"
+F 11 "http://uk.rs-online.com/web/p/products/1312731" H 2550 750 50  0001 L CNN "Arrow Price/Stock"
+	1    1600 1550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1350 1300 1350 1550
+Wire Wire Line
+	1350 1550 1600 1550
+$Comp
+L power:GND #PWR0102
+U 1 1 5BEE4C43
+P 1350 1650
+F 0 "#PWR0102" H 1350 1400 50  0001 C CNN
+F 1 "GND" H 1355 1477 50  0000 C CNN
+F 2 "" H 1350 1650 50  0001 C CNN
+F 3 "" H 1350 1650 50  0001 C CNN
+	1    1350 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1350 1650 1600 1650
+$Comp
+L power:+5V #PWR0103
+U 1 1 5BEE4CB7
+P 2850 1550
+F 0 "#PWR0103" H 2850 1400 50  0001 C CNN
+F 1 "+5V" H 2865 1723 50  0000 C CNN
+F 2 "" H 2850 1550 50  0001 C CNN
+F 3 "" H 2850 1550 50  0001 C CNN
+	1    2850 1550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2700 1550 2850 1550
+$Comp
+L power:GND #PWR0104
+U 1 1 5BEE4DDA
+P 4200 2850
+F 0 "#PWR0104" H 4200 2600 50  0001 C CNN
+F 1 "GND" H 4205 2677 50  0000 C CNN
+F 2 "" H 4200 2850 50  0001 C CNN
+F 3 "" H 4200 2850 50  0001 C CNN
+	1    4200 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0105
+U 1 1 5BEE4E10
+P 4000 3200
+F 0 "#PWR0105" H 4000 3050 50  0001 C CNN
+F 1 "+5V" H 4015 3373 50  0000 C CNN
+F 2 "" H 4000 3200 50  0001 C CNN
+F 3 "" H 4000 3200 50  0001 C CNN
+	1    4000 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 2850 4600 3100
+Wire Wire Line
+	4000 3200 4600 3200
+$Comp
+L Transistor_BJT:2SC1815 Q1
+U 1 1 5C287B22
+P 8000 5450
+F 0 "Q1" H 8191 5496 50  0000 L CNN
+F 1 "2SC1815" H 8191 5405 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 8200 5375 50  0001 L CIN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Toshiba%20PDFs/2SC1815.pdf" H 8000 5450 50  0001 L CNN
+	1    8000 5450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 5C287CFE
+P 7500 5300
+F 0 "R1" H 7570 5346 50  0000 L CNN
+F 1 "8.2k" H 7570 5255 50  0000 L CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7430 5300 50  0001 C CNN
+F 3 "~" H 7500 5300 50  0001 C CNN
+	1    7500 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 5000 7500 5150
+Wire Wire Line
+	7500 5450 7800 5450
+Wire Wire Line
+	8650 5250 8100 5250
+$Comp
+L power:GND #PWR0106
+U 1 1 5C28805A
+P 8100 5650
+F 0 "#PWR0106" H 8100 5400 50  0001 C CNN
+F 1 "GND" H 8105 5477 50  0000 C CNN
+F 2 "" H 8100 5650 50  0001 C CNN
+F 3 "" H 8100 5650 50  0001 C CNN
+	1    8100 5650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0107
+U 1 1 5C288094
+P 10300 5250
+F 0 "#PWR0107" H 10300 5100 50  0001 C CNN
+F 1 "+5V" H 10315 5423 50  0000 C CNN
+F 2 "" H 10300 5250 50  0001 C CNN
+F 3 "" H 10300 5250 50  0001 C CNN
+	1    10300 5250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9950 5250 10300 5250
+$Comp
+L power:+3.3V #PWR0108
+U 1 1 5C288163
+P 6450 3100
+F 0 "#PWR0108" H 6450 2950 50  0001 C CNN
+F 1 "+3.3V" H 6465 3273 50  0000 C CNN
+F 2 "" H 6450 3100 50  0001 C CNN
+F 3 "" H 6450 3100 50  0001 C CNN
+	1    6450 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0109
+U 1 1 5C28819D
+P 6600 3200
+F 0 "#PWR0109" H 6600 3050 50  0001 C CNN
+F 1 "+5V" H 6615 3373 50  0000 C CNN
+F 2 "" H 6600 3200 50  0001 C CNN
+F 3 "" H 6600 3200 50  0001 C CNN
+	1    6600 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6300 3100 6450 3100
+Wire Wire Line
+	6300 3200 6600 3200
+$Comp
+L Connector:Conn_01x02_Female J1
+U 1 1 5C298196
+P 10350 5450
+F 0 "J1" H 10378 5426 50  0000 L CNN
+F 1 "Fill" H 10378 5335 50  0000 L CNN
+F 2 "Connectors_JST:JST_XH_B02B-XH-A_02x2.50mm_Straight" H 10350 5450 50  0001 C CNN
+F 3 "~" H 10350 5450 50  0001 C CNN
+	1    10350 5450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9950 5150 10050 5150
+Wire Wire Line
+	10050 5150 10050 5450
+Wire Wire Line
+	10050 5450 10150 5450
+$Comp
+L SamacSys_Parts:946H-1C-5D K2
+U 1 1 5C298951
+P 8700 4450
+F 0 "K2" H 9350 4715 50  0000 C CNN
+F 1 "946H-1C-5D" H 9350 4624 50  0000 C CNN
+F 2 "SamacSys_Parts:946H1C5D" H 9850 4550 50  0001 L CNN
+F 3 "http://akizukidenshi.com/download/ds/hsinda/946Series_Relay.pdf" H 9850 4450 50  0001 L CNN
+F 4 "946 Series Relay" H 9850 4350 50  0001 L CNN "Description"
+F 5 "12" H 9850 4250 50  0001 L CNN "Height"
+F 6 "HSINDA" H 9850 4150 50  0001 L CNN "Manufacturer_Name"
+F 7 "946H-1C-5D" H 9850 4050 50  0001 L CNN "Manufacturer_Part_Number"
+F 8 "" H 9850 3950 50  0001 L CNN "RS Part Number"
+F 9 "" H 9850 3850 50  0001 L CNN "RS Price/Stock"
+F 10 "946H-1C-5D" H 9850 3750 50  0001 L CNN "Arrow Part Number"
+F 11 "" H 9850 3650 50  0001 L CNN "Arrow Price/Stock"
+	1    8700 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:2SC1815 Q2
+U 1 1 5C298958
+P 8050 4750
+F 0 "Q2" H 8241 4796 50  0000 L CNN
+F 1 "2SC1815" H 8241 4705 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 8250 4675 50  0001 L CIN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Toshiba%20PDFs/2SC1815.pdf" H 8050 4750 50  0001 L CNN
+	1    8050 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R2
+U 1 1 5C29895F
+P 7600 4750
+F 0 "R2" V 7393 4750 50  0000 C CNN
+F 1 "8.2k" V 7484 4750 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7530 4750 50  0001 C CNN
+F 3 "~" H 7600 4750 50  0001 C CNN
+	1    7600 4750
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8700 4550 8150 4550
+$Comp
+L power:GND #PWR0110
+U 1 1 5C29896A
+P 8150 4950
+F 0 "#PWR0110" H 8150 4700 50  0001 C CNN
+F 1 "GND" H 8155 4777 50  0000 C CNN
+F 2 "" H 8150 4950 50  0001 C CNN
+F 3 "" H 8150 4950 50  0001 C CNN
+	1    8150 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0111
+U 1 1 5C298970
+P 10350 4550
+F 0 "#PWR0111" H 10350 4400 50  0001 C CNN
+F 1 "+5V" H 10365 4723 50  0000 C CNN
+F 2 "" H 10350 4550 50  0001 C CNN
+F 3 "" H 10350 4550 50  0001 C CNN
+	1    10350 4550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10000 4550 10350 4550
+$Comp
+L Connector:Conn_01x02_Female J2
+U 1 1 5C298977
+P 10400 4750
+F 0 "J2" H 10428 4726 50  0000 L CNN
+F 1 "Dump" H 10428 4635 50  0000 L CNN
+F 2 "Connectors_JST:JST_XH_B02B-XH-A_02x2.50mm_Straight" H 10400 4750 50  0001 C CNN
+F 3 "~" H 10400 4750 50  0001 C CNN
+	1    10400 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10000 4450 10100 4450
+Wire Wire Line
+	10100 4450 10100 4750
+Wire Wire Line
+	10100 4750 10200 4750
+Wire Wire Line
+	7850 4750 7750 4750
+Wire Wire Line
+	7450 4750 7350 4750
+Wire Wire Line
+	7350 4750 7350 4900
+$Comp
+L SamacSys_Parts:946H-1C-5D K3
+U 1 1 5C29A437
+P 8700 3750
+F 0 "K3" H 9350 4015 50  0000 C CNN
+F 1 "946H-1C-5D" H 9350 3924 50  0000 C CNN
+F 2 "SamacSys_Parts:946H1C5D" H 9850 3850 50  0001 L CNN
+F 3 "http://akizukidenshi.com/download/ds/hsinda/946Series_Relay.pdf" H 9850 3750 50  0001 L CNN
+F 4 "946 Series Relay" H 9850 3650 50  0001 L CNN "Description"
+F 5 "12" H 9850 3550 50  0001 L CNN "Height"
+F 6 "HSINDA" H 9850 3450 50  0001 L CNN "Manufacturer_Name"
+F 7 "946H-1C-5D" H 9850 3350 50  0001 L CNN "Manufacturer_Part_Number"
+F 8 "" H 9850 3250 50  0001 L CNN "RS Part Number"
+F 9 "" H 9850 3150 50  0001 L CNN "RS Price/Stock"
+F 10 "946H-1C-5D" H 9850 3050 50  0001 L CNN "Arrow Part Number"
+F 11 "" H 9850 2950 50  0001 L CNN "Arrow Price/Stock"
+	1    8700 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:2SC1815 Q3
+U 1 1 5C29A43E
+P 8050 4050
+F 0 "Q3" H 8241 4096 50  0000 L CNN
+F 1 "2SC1815" H 8241 4005 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 8250 3975 50  0001 L CIN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Toshiba%20PDFs/2SC1815.pdf" H 8050 4050 50  0001 L CNN
+	1    8050 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R3
+U 1 1 5C29A445
+P 7600 4050
+F 0 "R3" V 7393 4050 50  0000 C CNN
+F 1 "8.2k" V 7484 4050 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7530 4050 50  0001 C CNN
+F 3 "~" H 7600 4050 50  0001 C CNN
+	1    7600 4050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8700 3850 8150 3850
+$Comp
+L power:+5V #PWR0112
+U 1 1 5C29A44D
+P 10350 3850
+F 0 "#PWR0112" H 10350 3700 50  0001 C CNN
+F 1 "+5V" H 10365 4023 50  0000 C CNN
+F 2 "" H 10350 3850 50  0001 C CNN
+F 3 "" H 10350 3850 50  0001 C CNN
+	1    10350 3850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10000 3850 10350 3850
+$Comp
+L Connector:Conn_01x02_Female J3
+U 1 1 5C29A454
+P 10400 4050
+F 0 "J3" H 10428 4026 50  0000 L CNN
+F 1 "Oxy" H 10428 3935 50  0000 L CNN
+F 2 "Connectors_JST:JST_XH_B02B-XH-A_02x2.50mm_Straight" H 10400 4050 50  0001 C CNN
+F 3 "~" H 10400 4050 50  0001 C CNN
+	1    10400 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10000 3750 10100 3750
+Wire Wire Line
+	10100 3750 10100 4050
+Wire Wire Line
+	10100 4050 10200 4050
+Wire Wire Line
+	7850 4050 7750 4050
+Wire Wire Line
+	7450 4050 7350 4050
+$Comp
+L SamacSys_Parts:946H-1C-5D K4
+U 1 1 5C29ABB9
+P 8700 3050
+F 0 "K4" H 9350 3315 50  0000 C CNN
+F 1 "946H-1C-5D" H 9350 3224 50  0000 C CNN
+F 2 "SamacSys_Parts:946H1C5D" H 9850 3150 50  0001 L CNN
+F 3 "http://akizukidenshi.com/download/ds/hsinda/946Series_Relay.pdf" H 9850 3050 50  0001 L CNN
+F 4 "946 Series Relay" H 9850 2950 50  0001 L CNN "Description"
+F 5 "12" H 9850 2850 50  0001 L CNN "Height"
+F 6 "HSINDA" H 9850 2750 50  0001 L CNN "Manufacturer_Name"
+F 7 "946H-1C-5D" H 9850 2650 50  0001 L CNN "Manufacturer_Part_Number"
+F 8 "" H 9850 2550 50  0001 L CNN "RS Part Number"
+F 9 "" H 9850 2450 50  0001 L CNN "RS Price/Stock"
+F 10 "946H-1C-5D" H 9850 2350 50  0001 L CNN "Arrow Part Number"
+F 11 "" H 9850 2250 50  0001 L CNN "Arrow Price/Stock"
+	1    8700 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:2SC1815 Q4
+U 1 1 5C29ABC0
+P 8050 3350
+F 0 "Q4" H 8241 3396 50  0000 L CNN
+F 1 "2SC1815" H 8241 3305 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 8250 3275 50  0001 L CIN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Toshiba%20PDFs/2SC1815.pdf" H 8050 3350 50  0001 L CNN
+	1    8050 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R4
+U 1 1 5C29ABC7
+P 7600 3350
+F 0 "R4" V 7393 3350 50  0000 C CNN
+F 1 "8.2k" V 7484 3350 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7530 3350 50  0001 C CNN
+F 3 "~" H 7600 3350 50  0001 C CNN
+	1    7600 3350
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8700 3150 8150 3150
+$Comp
+L power:+5V #PWR0113
+U 1 1 5C29ABCF
+P 10350 3150
+F 0 "#PWR0113" H 10350 3000 50  0001 C CNN
+F 1 "+5V" H 10365 3323 50  0000 C CNN
+F 2 "" H 10350 3150 50  0001 C CNN
+F 3 "" H 10350 3150 50  0001 C CNN
+	1    10350 3150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10000 3150 10350 3150
+$Comp
+L Connector:Conn_01x02_Female J4
+U 1 1 5C29ABD6
+P 10400 3350
+F 0 "J4" H 10427 3326 50  0000 L CNN
+F 1 "Fire" H 10427 3235 50  0000 L CNN
+F 2 "Connectors_JST:JST_XH_B02B-XH-A_02x2.50mm_Straight" H 10400 3350 50  0001 C CNN
+F 3 "~" H 10400 3350 50  0001 C CNN
+	1    10400 3350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10000 3050 10100 3050
+Wire Wire Line
+	10100 3050 10100 3350
+Wire Wire Line
+	10100 3350 10200 3350
+Wire Wire Line
+	7850 3350 7750 3350
+Wire Wire Line
+	7350 4050 7350 4700
+Wire Wire Line
+	7350 4700 7250 4700
+Wire Wire Line
+	7250 4700 7250 4800
+Wire Wire Line
+	7200 4650 7300 4650
+Wire Wire Line
+	7300 4650 7300 3350
+Wire Wire Line
+	7300 3350 7450 3350
+$Comp
+L power:GND #PWR0114
+U 1 1 5C29D6FF
+P 8150 4250
+F 0 "#PWR0114" H 8150 4000 50  0001 C CNN
+F 1 "GND" H 8155 4077 50  0000 C CNN
+F 2 "" H 8150 4250 50  0001 C CNN
+F 3 "" H 8150 4250 50  0001 C CNN
+	1    8150 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0115
+U 1 1 5C29D745
+P 8150 3550
+F 0 "#PWR0115" H 8150 3300 50  0001 C CNN
+F 1 "GND" H 8155 3377 50  0000 C CNN
+F 2 "" H 8150 3550 50  0001 C CNN
+F 3 "" H 8150 3550 50  0001 C CNN
+	1    8150 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6300 5000 7500 5000
+Wire Wire Line
+	6300 4900 7350 4900
+Wire Wire Line
+	6300 4800 7250 4800
+Wire Wire Line
+	7200 4650 7200 4700
+Wire Wire Line
+	7200 4700 6300 4700
+$Comp
+L Connector:Conn_01x05_Female J5
+U 1 1 5C2A5172
+P 3650 4900
+F 0 "J5" H 3544 4475 50  0000 C CNN
+F 1 "LEDs" H 3544 4566 50  0000 C CNN
+F 2 "Connectors_JST:JST_XH_B05B-XH-A_05x2.50mm_Straight" H 3650 4900 50  0001 C CNN
+F 3 "~" H 3650 4900 50  0001 C CNN
+	1    3650 4900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4600 4700 3850 4700
+Wire Wire Line
+	4600 4800 3850 4800
+Wire Wire Line
+	4600 4900 3850 4900
+Wire Wire Line
+	4600 5000 3850 5000
+$Comp
+L power:GND #PWR0116
+U 1 1 5C2ACBD9
+P 3850 5100
+F 0 "#PWR0116" H 3850 4850 50  0001 C CNN
+F 1 "GND" H 3855 4927 50  0000 C CNN
+F 2 "" H 3850 5100 50  0001 C CNN
+F 3 "" H 3850 5100 50  0001 C CNN
+	1    3850 5100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3700 3350 4350 3350
+Wire Wire Line
+	4350 3350 4350 4200
+Wire Wire Line
+	4350 4200 4600 4200
+Wire Wire Line
+	3700 3450 3850 3450
+Wire Wire Line
+	3850 3450 3850 2850
+Wire Wire Line
+	3850 2850 4200 2850
+Connection ~ 4200 2850
+Wire Wire Line
+	3700 3750 3850 3750
+Wire Wire Line
+	3850 3750 3850 3450
+Connection ~ 3850 3450
+Wire Wire Line
+	3700 3850 3850 3850
+Wire Wire Line
+	3850 3850 3850 3750
+Connection ~ 3850 3750
+$Comp
+L power:+3.3V #PWR0117
+U 1 1 5C38E951
+P 4000 3550
+F 0 "#PWR0117" H 4000 3400 50  0001 C CNN
+F 1 "+3.3V" H 4015 3723 50  0000 C CNN
+F 2 "" H 4000 3550 50  0001 C CNN
+F 3 "" H 4000 3550 50  0001 C CNN
+	1    4000 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3700 3550 3900 3550
+Wire Wire Line
+	3700 3950 3900 3950
+Wire Wire Line
+	3900 3950 3900 3550
+Connection ~ 3900 3550
+Wire Wire Line
+	3900 3550 4000 3550
+Wire Wire Line
+	3700 4150 4150 4150
+Wire Wire Line
+	4150 4150 4150 4300
+Wire Wire Line
+	4150 4300 4600 4300
+Wire Wire Line
+	3700 4050 4250 4050
+Wire Wire Line
+	4250 4050 4250 4400
+Wire Wire Line
+	4250 4400 4600 4400
+Wire Wire Line
+	3700 4250 4500 4250
+Wire Wire Line
+	4500 4250 4500 4100
+Wire Wire Line
+	4500 4100 4600 4100
+$Comp
+L Connector:Conn_01x06_Female J6
+U 1 1 5C39A416
+P 6700 4300
+F 0 "J6" H 6727 4276 50  0000 L CNN
+F 1 "Switches" H 6727 4185 50  0000 L CNN
+F 2 "Connectors_JST:JST_XH_B06B-XH-A_06x2.50mm_Straight" H 6700 4300 50  0001 C CNN
+F 3 "~" H 6700 4300 50  0001 C CNN
+	1    6700 4300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6300 4100 6500 4100
+Wire Wire Line
+	6300 4200 6500 4200
+Wire Wire Line
+	6300 4300 6500 4300
+Wire Wire Line
+	6300 4400 6500 4400
+Wire Wire Line
+	6300 4500 6500 4500
+Wire Wire Line
+	6300 4600 6500 4600
+$Comp
+L Device:R R5
+U 1 1 5C3AA845
+P 3900 2700
+F 0 "R5" V 3693 2700 50  0000 C CNN
+F 1 "1k" V 3784 2700 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 3830 2700 50  0001 C CNN
+F 3 "~" H 3900 2700 50  0001 C CNN
+	1    3900 2700
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:LED D1
+U 1 1 5C3AA975
+P 4300 2700
+F 0 "D1" H 4292 2445 50  0000 C CNN
+F 1 "LED" H 4292 2536 50  0000 C CNN
+F 2 "LEDs:LED_D3.0mm" H 4300 2700 50  0001 C CNN
+F 3 "~" H 4300 2700 50  0001 C CNN
+	1    4300 2700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4200 2850 4450 2850
+Wire Wire Line
+	3700 3650 3750 3650
+Wire Wire Line
+	3750 3650 3750 2700
+Wire Wire Line
+	4050 2700 4150 2700
+Wire Wire Line
+	4450 2700 4450 2850
+Connection ~ 4450 2850
+Wire Wire Line
+	4450 2850 4600 2850
+$Comp
+L FTE_denshi:IM920 IM1
+U 1 1 5C3A2AE4
+P 3500 4050
+F 0 "IM1" H 3519 3135 50  0000 C CNN
+F 1 "IM920" H 3519 3226 50  0000 C CNN
+F 2 "fte-denshi:IM920" H 3400 4050 50  0001 C CNN
+F 3 "" H 3400 4050 50  0001 C CNN
+	1    3500 4050
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector:Conn_01x02_Female J7
+U 1 1 5C3A31C8
+P 4300 1600
+F 0 "J7" H 4327 1576 50  0000 L CNN
+F 1 "DC_IN" H 4327 1485 50  0000 L CNN
+F 2 "Connectors_JST:JST_XH_B02B-XH-A_02x2.50mm_Straight" H 4300 1600 50  0001 C CNN
+F 3 "~" H 4300 1600 50  0001 C CNN
+	1    4300 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+12V #PWR0118
+U 1 1 5C3A3290
+P 4100 1600
+F 0 "#PWR0118" H 4100 1450 50  0001 C CNN
+F 1 "+12V" H 4115 1773 50  0000 C CNN
+F 2 "" H 4100 1600 50  0001 C CNN
+F 3 "" H 4100 1600 50  0001 C CNN
+	1    4100 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L hanyoukibanv3-cache:GND #PWR0119
+U 1 1 5C3A32F7
+P 4100 1700
+F 0 "#PWR0119" H 4100 1450 50  0001 C CNN
+F 1 "GND" H 4105 1527 50  0000 C CNN
+F 2 "" H 4100 1700 50  0000 C CNN
+F 3 "" H 4100 1700 50  0000 C CNN
+	1    4100 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L hanyoukibanv3-cache:GND #PWR?
+U 1 1 5C3ADD36
+P 10200 3450
+F 0 "#PWR?" H 10200 3200 50  0001 C CNN
+F 1 "GND" H 10205 3277 50  0000 C CNN
+F 2 "" H 10200 3450 50  0000 C CNN
+F 3 "" H 10200 3450 50  0000 C CNN
+	1    10200 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L hanyoukibanv3-cache:GND #PWR?
+U 1 1 5C3ADD88
+P 10200 4150
+F 0 "#PWR?" H 10200 3900 50  0001 C CNN
+F 1 "GND" H 10205 3977 50  0000 C CNN
+F 2 "" H 10200 4150 50  0000 C CNN
+F 3 "" H 10200 4150 50  0000 C CNN
+	1    10200 4150
+	1    0    0    -1  
+$EndComp
+$Comp
+L hanyoukibanv3-cache:GND #PWR?
+U 1 1 5C3ADDF2
+P 10200 4850
+F 0 "#PWR?" H 10200 4600 50  0001 C CNN
+F 1 "GND" H 10205 4677 50  0000 C CNN
+F 2 "" H 10200 4850 50  0000 C CNN
+F 3 "" H 10200 4850 50  0000 C CNN
+	1    10200 4850
+	1    0    0    -1  
+$EndComp
+$Comp
+L hanyoukibanv3-cache:GND #PWR?
+U 1 1 5C3ADE44
+P 10150 5550
+F 0 "#PWR?" H 10150 5300 50  0001 C CNN
+F 1 "GND" H 10155 5377 50  0000 C CNN
+F 2 "" H 10150 5550 50  0000 C CNN
+F 3 "" H 10150 5550 50  0000 C CNN
+	1    10150 5550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+12V #PWR?
+U 1 1 5C3AE031
+P 8700 3250
+F 0 "#PWR?" H 8700 3100 50  0001 C CNN
+F 1 "+12V" V 8715 3378 50  0000 L CNN
+F 2 "" H 8700 3250 50  0001 C CNN
+F 3 "" H 8700 3250 50  0001 C CNN
+	1    8700 3250
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+12V #PWR?
+U 1 1 5C3AE0CB
+P 8700 3950
+F 0 "#PWR?" H 8700 3800 50  0001 C CNN
+F 1 "+12V" V 8715 4078 50  0000 L CNN
+F 2 "" H 8700 3950 50  0001 C CNN
+F 3 "" H 8700 3950 50  0001 C CNN
+	1    8700 3950
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+12V #PWR?
+U 1 1 5C3AE1D9
+P 8700 4650
+F 0 "#PWR?" H 8700 4500 50  0001 C CNN
+F 1 "+12V" V 8715 4778 50  0000 L CNN
+F 2 "" H 8700 4650 50  0001 C CNN
+F 3 "" H 8700 4650 50  0001 C CNN
+	1    8700 4650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+12V #PWR?
+U 1 1 5C3B0DFA
+P 8650 5350
+F 0 "#PWR?" H 8650 5200 50  0001 C CNN
+F 1 "+12V" V 8665 5478 50  0000 L CNN
+F 2 "" H 8650 5350 50  0001 C CNN
+F 3 "" H 8650 5350 50  0001 C CNN
+	1    8650 5350
+	0    -1   -1   0   
+$EndComp
+$EndSCHEMATC

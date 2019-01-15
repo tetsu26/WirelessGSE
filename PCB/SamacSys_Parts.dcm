@@ -1,0 +1,27 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP NE555D
+D NE555DG4, Timer, 4.5 To 16V, 8-Pin SOIC-8
+K
+F http://www.ti.com/lit/ds/symlink/ne555.pdf
+$ENDCMP
+#
+$CMP BP5293-50
+D Switching Voltage Regulators 1ch DC/DC Buck Conv 5V Typ Output Volt
+K
+F https://componentsearchengine.com/Datasheets/1/BP5293-50.pdf
+$ENDCMP
+#
+$CMP 946H-1C-5D
+D 946 Series Relay
+K
+F http://akizukidenshi.com/download/ds/hsinda/946Series_Relay.pdf
+$ENDCMP
+#
+$CMP MBED-LPC1768
+D ARM mbed LPC1768 Module
+K
+F https://os.mbed.com/platforms/mbed-LPC1768/
+$ENDCMP
+#
+#End Doc Library
