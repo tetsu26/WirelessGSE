@@ -1,9 +1,8 @@
 # GSE Ver.2 の仕様書   
-東北大学FROM THE EARTH用のGSE制御システムVer.2の仕様書です．  
-マークダウンで書いてあります．  
+東北大学FROM THE EARTH用のGSE制御システムVer.2の仕様書です．    
 質問等は tetsushi_m[at]outlook.jp まで．
 
-# 使いたい部品  
+## 使いたい部品  
 * マイコン    MBED LPC1768  
 まぁいつもの．ピンがいっぱいあるから．
 * 3端子dcdc   BP5293-50   http://akizukidenshi.com/catalog/g/gM-11188/  
@@ -16,8 +15,6 @@ mbedのdigital out は40mAまでしか出せないので，リレーは動かせ
 協賛でもらったやつ．正直無線GSEには向いてない．
 * その他諸々
 
-# ToDo
-* KiCadでの回路図・配線図の作成  
-Im920のフットプリント作る．  
-* PCBGOGOへの基板発注
-* プログラムコード改良
+## プログラムコード
+\Sourses にあります．mbedオンラインコンパイラにコピペして使ってください．
+ロケット側と点火点側でソースコードが分かれてるんで気をつけてください．
