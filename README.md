@@ -22,14 +22,14 @@ mbedのdigital out は40mAまでしか出せないので，リレーは動かせ
 ### コード解説
 ソースコードはc++(ほぼC)で書いてあります．一応頭から説明しておきます．
 
-```
+```cpp
 #include<mbed.h>
 #include<IM920.h>
 #include<cstring>
 ```
 ライブラリのインポートです（それはそう）．
 
-```
+```cpp
 #define IM920_TX p13
 #define IM920_RX p14
 #define IM920_BUSY p11
@@ -38,7 +38,7 @@ mbedのdigital out は40mAまでしか出せないので，リレーは動かせ
 ```
 IM920関係のピン設定ですね．
 
-```
+```cpp
 DigitalOut myled(LED1);
 DigitalOut myled2(LED2);
 DigitalOut myled3(LED3);
@@ -61,7 +61,7 @@ Serial pc(USBTX, USBRX);
 ```
 そのたもろもろのピン設定です．基板自作したときは適宜変えてください．
 
-```
+```cpp
 // グローバルな奴ら
 char send_data[8];    //送信するデータを格納する変数
 char recv_data[8];    //受信すry)
@@ -70,7 +70,7 @@ int i = 0;            //一秒間隔で赤いLEDを点滅させるのに使う
 ```
 グローバル関数です．
 
-```
+```cpp
 int fire_buzzer(int i)
 {
     if(i == 1)
@@ -88,7 +88,7 @@ int fire_buzzer(int i)
 
 #### callback() 関数
 
-```
+```cpp
 void callback () {  //受信時の割り込み関数（受信したときに送信するコード）
     int i;
 
@@ -124,13 +124,13 @@ void callback () {  //受信時の割り込み関数（受信したときに送�
 }
 ```
 これはim920が受信したときに実行される予定の関数です．グローバル関数にiがあるのにローカルでもiを宣言して使うくそコードになってますね，今気づきました．ここからわかりにくいと思うので詳しく書いておきます．
-```
+```cpp
 i = im920.recv(recv_data, 8);
 recv_data[i] = 0;
 pc.printf("recv: '%s' (%d)\r\n", recv_data, i);
 ```
 この辺はおまじないです．書いておいてください．
-```
+```cpp
 if (recv_data[0] == '5' || recv_data[7] == '5')     //きちんとデータを受け取れたか確認
     {
         led_fill = recv_data[1] - '0';           
@@ -145,7 +145,7 @@ if (recv_data[0] == '5' || recv_data[7] == '5')     //きちんとデータを�
 その後の`led_fill = recv_data[1] - '0';`ですが，これは受信した8桁の2文字目がfillの状態を示しているのでそれをスイッチについたLEDに反映しています．受信したデータは`recv_data`に格納されているのですが，ASCIIコードなので`0`のASCIIコードを引くことで元の送信した数字に戻しています．ほかも同じです．
 
 #### callback2() 関数
-```
+```cpp
 void callback2()    //受信割り込みの回数を数える関数
 {
     
