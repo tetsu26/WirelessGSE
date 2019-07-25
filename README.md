@@ -30,6 +30,14 @@ FTEのGSEを無線化した経緯について書いておきます．
 
 つまり，このくそ長いはじめにで何が言いたいかというと，**「無線使うな有線を使え」** ということです．きっとこれを読んでいるあなたは不幸にも無線GSEを押しつけられてしまったしがない電子班員でしょう．ご愁傷さま．燃焼班員にあったら是非伝えてください． **「無線使うな有線を使え」** と．あいつらはこの無線GSEのやばさを知りません．健闘を祈ります．
 
+# よく燃焼班に聞かれること・注意すべきこと
+* 無線のチャンネルは？  
+  プログラムコードからは変更できない．IM920の設定から変更する．ググれば出てくるし，[この辺のサイト](https://www.interplan.co.jp/solution/wireless/im920/im920.php)を参考にすべし．
+
+* 安全対策は？  
+  万が一Fill中に通信が途絶えてもFillが止まるように，Fillには時間制限がかかっている．時間制限はロケット側のGSEのプログラムを書き換えることで変更できる．デフォルトでは60秒以上Fillが続くと強制的に30秒ダンプする．  
+  同様に，Oxyも60秒以上入らないようになっている．このときはダンプせず，システムを再起動する．
+
 # 使っている主な部品  
 * マイコン    MBED LPC1768  
 まぁいつもの．ピンがいっぱいあるから．
@@ -47,7 +55,7 @@ mbedのdigital out は40mAまでしか出せないので，リレーは動かせ
 \SourceCode にあります．mbedオンラインコンパイラにコピペして使ってください．
 ロケット側と点火点側でソースコードが分かれてるんで気をつけてください．
 
-### コード解説_点火点側
+## コード解説_点火点側
 ソースコードはc++(ほぼC)で書いてあります．一応頭から説明しておきます．
 
 ```cpp
@@ -96,7 +104,7 @@ char recv_data[8];    //受信すry)
 int cb_count = 0;     //割り込み回数を数えるやつ
 int i = 0;            //一秒間隔で赤いLEDを点滅させるのに使う
 ```
-グローバル関数です．
+グローバル変数です．
 
 ```cpp
 int fire_buzzer(int i)
@@ -114,7 +122,7 @@ int fire_buzzer(int i)
 ```
 これは fire をオンにしたときにブザーから音を出すための関数です．音程が気に入らない人は変えてください．
 
-#### callback() 関数
+### callback() 関数
 
 ```cpp
 void callback () {  //受信時の割り込み関数（受信したときに送信するコード）
@@ -189,7 +197,7 @@ im920.sendData(send_data,8);    //8文字送りますよーってやつ
 ```
 そしてここで上で作った文字列を送信しています．
 
-#### callback2() 関数
+### callback2() 関数
 ```cpp
 void callback2()    //受信割り込みの回数を数える関数
 {
@@ -218,7 +226,7 @@ void callback2()    //受信割り込みの回数を数える関数
 ```
 これは接続が切れたときの対処です．コードをざっくり見てもらうと気づくと思うのですが，このコードには「受信したら割り込み処理で送信する」機能しかないので，一度接続が切れる（というかデータのやりとりが途絶える）と復帰できなくなる問題があります．なので`callback2()`関数を1秒ごとに起動してもしその前1秒間に一度も通信していなかったらこのmbedをリセットして`main()`関数をもう一度頭から実行します．`NVIC_SystemReset()`ってのはmbedのリセットボタンを押した状態をコードから作れる魔法の言葉です．
 
-#### main()関数
+### main()関数
 ```cpp
 int main()
 {
@@ -252,3 +260,154 @@ int main()
 }
 ```
 ここは特に説明することもない気がします．セットアップの時に1度データを送信します．
+
+## コード解説_ロケット側
+同じように解説書いておきます．
+```cpp
+#include<mbed.h>
+#include<IM920.h>
+
+#define IM920_TX p13
+#define IM920_RX p14
+#define IM920_BUSY p11
+#define IM920_RESET p12
+#define IM920_SERIAL_BANDRATE 19200//im920の通信レート
+
+//LED&SWITCHたち      
+DigitalOut myled(LED1);
+DigitalOut myled2(LED2);
+DigitalOut myled3(LED3);
+DigitalOut myled4(LED4);
+DigitalOut fill(p21);
+DigitalOut dump(p22);
+DigitalOut oxy(p23);
+DigitalOut fire(p24);
+
+IM920 im920(p13, p14, p11, p12,19200);//無線通信用のserialクラス
+Serial pc(USBTX, USBRX);
+```
+まぁこの辺は説明するまでもないでしょ．
+```cpp
+char send_data[8];    //送信するデータを格納する変数
+char recv_data[8];    //受信すry)
+int fill_count = 0;     //fillの割り込みの回数を数えるやつ
+int oxy_count = 0;     //oxyの割り込みの回数を数えるやつ
+```
+グローバル変数の定義．
+
+### callback()関数
+```cpp
+void callback () {
+    int i;
+    int fire_count = 0;
+    
+    i = im920.recv(recv_data, 8);
+    recv_data[i] = 0;
+    printf("recv: '%s' (%d)\r\n", recv_data, i);
+    
+    if (recv_data[0] == '5' || recv_data[7] == '5')     //きちんとデータを受け取れたか確認
+    {
+        fill = recv_data[1] - '0';           
+        dump = recv_data[2] - '0';
+        oxy = recv_data[3] - '0';
+        fire_count = recv_data[4] - '0';
+        
+        if(fire_count == 1 && oxy == 1){
+            fire = 1;
+        }else{
+            fire = 0;
+        }
+        
+    }
+    /*
+    for(int i = 0; i < 8; i++)
+    {
+        send_data[i] = recv_data[i];
+    }
+    */
+    im920.sendData(recv_data,8);
+    //printf("send!!:%s\r\n",recv_data);
+}
+```
+点火点側の`callback`関数とほとんど同じです．ただ，`oxy`が入ってないと`fire`がオンにならないようにしてあります．
+
+### fillcount()関数
+```cpp
+void fillcount()    //受信割り込みの回数を数える関数
+{
+    if(fill == 1)
+    {
+        fill_count += 1;
+    }else{
+        fill_count = 0;
+    }
+    
+    if(oxy == 1)
+    {
+        oxy_count += 1;
+    }else{
+        oxy_count = 0;
+    }
+    
+    printf("fill_count: %d\r\n",fill_count);
+    printf("oxy_count: %d\r\n",oxy_count);
+    if(fill_count >= 60)
+    {
+        fill = 0;
+        dump = 1;
+        printf("recovery mode!!! Dump 30second\r\n");
+        wait(30);
+        printf("reboot!!");
+        NVIC_SystemReset(); 
+        
+    }
+    if(oxy_count >= 60)
+    {
+        oxy = 0;
+        printf("recovery mode!!!\r\n");
+        printf("reboot!!");
+        NVIC_SystemReset(); 
+    }
+    
+}
+```
+この関数を1秒に一回割り込みさせることで，`fill`がオンになってる秒数などを数えています．
+```cpp 
+if(fill_count >= 60)
+```
+の60をいじるとFill時間に制限をかけられます．60の時は一分以上はFillできないという具合です．
+
+### main()関数
+```cpp
+int main()
+{
+    
+    pc.baud(115200);
+    pc.printf("*** IM920\r\n");
+    
+    /* 受信側との接続を確立する */
+    
+    im920.init();
+
+    im920.attach(callback);
+    myled = 1;          //設定完了の合図
+    
+    Ticker fill_limit;
+    fill_limit.attach(&fillcount,1);
+    
+    im920.poll();
+    
+    
+    while(1){
+       im920.poll();
+       //wait_ms(1);
+    }
+    
+}
+```
+特にいうことはないです．
+```cpp
+    Ticker fill_limit;
+    fill_limit.attach(&fillcount,1);
+```
+でfillcount関数に1秒おきの割り込みを設定しています．
